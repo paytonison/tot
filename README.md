@@ -18,13 +18,61 @@ total core.
 
 ## Termination Verdicts
 
-| Verdict | Result | Meaning |
-| --- | --- | --- |
-| `Halts` | Accepted | The checker recognized a termination proof. |
+| Verdict       | Result   | Meaning                                               |
+| ------------- | -------- | ----------------------------------------------------- |
+| `Halts`       | Accepted | The checker recognized a termination proof.           |
 | `DoesNotHalt` | Rejected | The checker found an obvious non-terminating pattern. |
-| `Unknown` | Rejected | The checker could not prove termination. |
+| `Unknown`     | Rejected | The checker could not prove termination.              |
 
 The core rule is simple: only `Halts` programs run.
+
+## Why Tot Exists
+
+Most general-purpose languages permit unrestricted loops, recursion, I/O,
+threads, external state, and self-reference. That power is useful, but it makes
+universal termination checking undecidable.
+
+Tot takes the opposite approach. It narrows the language boundary so the
+compiler can reject anything outside a conservative proof envelope. Every
+accepted Tot program is intended to halt.
+
+This repository is a compact Python prototype that:
+
+- lexes and parses a small Nat-focused language,
+- builds an abstract syntax tree,
+- runs a conservative termination checker,
+- rejects programs classified as DoesNotHalt or Unknown,
+- interprets only accepted programs.
+
+## Why This Experiment Matters
+
+Tot is also a small demonstration of AI-assisted language design.
+
+The project began as a discussion with ChatGPT about one of the most fundamental
+limits in computation: the halting problem. Rather than pretending to solve the
+impossible case, the design moved around it. The resulting idea was a tiny
+programming language that only accepts code whose termination can be proven, and
+rejects everything else as either non-halting or unknown.
+
+That design was then handed to Codex as an implementation brief. Codex produced
+the working prototype in Python, including the parser, checker, interpreter,
+examples, and .tot source file convention.
+
+That makes Tot a dual-purpose demo:
+
+1. As a programming language experiment, it shows how a language can enforce
+   totality by refusing to execute programs outside a conservative proof subset.
+2. As an AI/agent experiment, it shows a human and AI system moving from
+   theoretical computer science discussion, to language design, to working
+   implementation.
+
+The important part is not that Tot is large, production-ready, or formally
+complete. It is not. The important part is that the project captures a complete
+cognitive loop: problem framing, constraint recognition, design synthesis,
+agent handoff, implementation, and executable artifact.
+
+In miniature, Tot demonstrates how AI systems can help turn abstract technical
+ideas into concrete software experiments.
 
 ## Requirements
 

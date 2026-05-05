@@ -26,53 +26,45 @@ total core.
 
 The core rule is simple: only `Halts` programs run.
 
-## Why Tot Exists
-
-Most general-purpose languages permit unrestricted loops, recursion, I/O,
-threads, external state, and self-reference. That power is useful, but it makes
-universal termination checking undecidable.
-
-Tot takes the opposite approach. It narrows the language boundary so the
-compiler can reject anything outside a conservative proof envelope. Every
-accepted Tot program is intended to halt.
-
-This repository is a compact Python prototype that:
-
-- lexes and parses a small Nat-focused language,
-- builds an abstract syntax tree,
-- runs a conservative termination checker,
-- rejects programs classified as DoesNotHalt or Unknown,
-- interprets only accepted programs.
-
 ## Why This Experiment Matters
 
-Tot is also a small demonstration of AI-assisted language design.
+Tot is more than a toy programming language. It is a compact demonstration of
+AI-assisted research, language design, and agentic implementation.
 
-The project began as a discussion with ChatGPT about one of the most fundamental
-limits in computation: the halting problem. Rather than pretending to solve the
-impossible case, the design moved around it. The resulting idea was a tiny
-programming language that only accepts code whose termination can be proven, and
-rejects everything else as either non-halting or unknown.
+The project began with a discussion about one of the central limits of
+computation: the halting problem. Rather than treating the impossible case as a
+dead end, the design reframed the problem around total programming: accept only
+programs whose termination can be proven, and reject everything else as either
+non-halting or unknown.
 
-That design was then handed to Codex as an implementation brief. Codex produced
-the working prototype in Python, including the parser, checker, interpreter,
-examples, and .tot source file convention.
+That idea was then turned into an implementation brief and handed to Codex,
+which produced the working Python prototype, including the lexer, parser, AST,
+termination checker, interpreter, examples, and `.tot` source convention.
 
-That makes Tot a dual-purpose demo:
+The result is a small but complete artifact: a theoretical computing problem
+became a language-design concept, then a working executable prototype.
 
-1. As a programming language experiment, it shows how a language can enforce
-   totality by refusing to execute programs outside a conservative proof subset.
-2. As an AI/agent experiment, it shows a human and AI system moving from
-   theoretical computer science discussion, to language design, to working
-   implementation.
+This matters because it demonstrates the new shape of software creation with
+advanced AI systems. The human role was not merely to “prompt” a model. The
+human role was to identify the problem, frame the constraints, guide the design,
+evaluate the result, and turn the output into a coherent public project.
 
-The important part is not that Tot is large, production-ready, or formally
-complete. It is not. The important part is that the project captures a complete
-cognitive loop: problem framing, constraint recognition, design synthesis,
-agent handoff, implementation, and executable artifact.
+Tot is intentionally small. That is the point. Its value is not scale. Its value
+is compression.
 
-In miniature, Tot demonstrates how AI systems can help turn abstract technical
-ideas into concrete software experiments.
+In one tiny repository, it shows:
+
+- theoretical problem framing,
+- practical constraint selection,
+- programming language design,
+- agent delegation,
+- implementation synthesis,
+- executable validation,
+- and public presentation.
+
+Tot is a miniature proof-of-concept for human-directed AI research and
+development: abstract computer science converted into working software through a
+human/AI cognitive loop.
 
 ## Requirements
 

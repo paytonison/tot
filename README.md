@@ -1,6 +1,6 @@
 # tot
 
-tot is a small AI framework written close to the machine.
+tot is a small AI framework being built close to the machine.
 
 It is an experiment in building transformer systems from first principles, with the model core in C and the surrounding tools kept simple enough to understand.
 
@@ -17,6 +17,16 @@ The framework is concerned with storage, layout, movement, arithmetic, masking, 
 A model is not magic.
 
 It is memory and computation arranged carefully.
+
+## Current State
+
+tot is experimental and early.
+
+At this stage, this branch is a project seed: a license, a README, and a clear direction for the system that will be built here.
+
+The implementation, build system, test harness, and example programs are expected to land incrementally. Until those files exist in the repository, this README should describe the intended architecture without pretending that unfinished commands or directories already work.
+
+The project is a workshop, not a product.
 
 ## Principles
 
@@ -44,21 +54,11 @@ In short:
 - _The model belongs to C._
 - _Experiments belong to Python._
 
-## Status
-
-tot is experimental.
-
-The interfaces are not stable. The layout may change. Some parts are sketches. Some parts are reference implementations. Some parts exist only to answer one question and then be replaced by something simpler.
-
-This is expected.
-
-The project is a workshop, not a product.
-
 ## Scope
 
-The current work is focused on the machinery needed for small transformer models.
+The first implementation work is focused on the machinery needed for small transformer models.
 
-This includes token streams, tensor storage, shape handling, masks, attention, feed-forward layers, training loops, tests, and comparison code.
+That means token streams, tensor storage, shape handling, masks, attention, feed-forward layers, training loops, tests, and comparison code.
 
 The eventual direction includes decoder-only models, encoder-decoder models, and mixture-of-experts variants.
 
@@ -66,11 +66,13 @@ The first target is not scale.
 
 The first target is understanding.
 
-## Layout
+## Planned Layout
 
 The repository is expected to remain small and plain.
 
-```
+This is the intended shape of the project as the implementation lands:
+
+```text
 tot/
 ├── c/         # model core
 ├── cpp/       # tokenizer and text tools
@@ -81,50 +83,25 @@ tot/
 └── docs/      # notes
 ```
 
-This layout may change as the system becomes clearer.
+This layout may change as the system becomes clearer. The tree above is a plan, not a claim that every directory already exists on this branch.
 
 ## Building
 
-The build should be ordinary.
+No build system is committed yet on this branch.
 
-For C components:
+When the C, C++, and Python pieces land, this section should contain exact commands that match the files in the repository. Until then, build instructions should stay honest and avoid placeholder commands that do not run.
 
-```sh
-make
-```
+Expected future build surfaces:
 
-For C++ components:
-
-```sh
-cmake -S . -B build
-cmake --build build
-```
-
-For Python tools:
-
-```sh
-python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-```
-
-These commands may change as the build system settles.
+- C components should build with a small Makefile or equivalent plain command.
+- C++ text tools should build with a small CMake project or direct compiler command.
+- Python tools should avoid unnecessary dependencies unless a dependency earns its place.
 
 ## Testing
 
-Tests should be small and exact.
+No test harness is committed yet on this branch.
 
-They should check things such as shape rules, buffer sizes, strides, masks, token round trips, deterministic behavior, and numerical sanity.
-
-```sh
-make test
-```
-
-For Python tests:
-
-```sh
-pytest
-```
+Tests should be small and exact. They should check things such as shape rules, buffer sizes, strides, masks, token round trips, deterministic behavior, and numerical sanity.
 
 A test that explains one assumption is better than a large test that hides ten.
 
@@ -166,4 +143,4 @@ Only after that does performance matter.
 
 ## License
 
-No license has been chosen yet.
+tot is licensed under the MIT License. See `LICENSE`.
